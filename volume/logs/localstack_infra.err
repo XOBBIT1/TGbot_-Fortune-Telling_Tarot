@@ -1,0 +1,20 @@
+2023-03-17T15:37:01.270  WARN --- [-functhread3] hypercorn.error            : ASGI Framework Lifespan error, continuing without Lifespan support
+2023-03-17T15:37:01.270  WARN --- [-functhread3] hypercorn.error            : ASGI Framework Lifespan error, continuing without Lifespan support
+2023-03-17T15:37:01.274  INFO --- [-functhread3] hypercorn.error            : Running on https://0.0.0.0:4566 (CTRL + C to quit)
+2023-03-17T15:37:01.274  INFO --- [-functhread3] hypercorn.error            : Running on https://0.0.0.0:4566 (CTRL + C to quit)
+2023-03-17T15:37:53.656  INFO --- [functhread15] l.services.motoserver      : starting moto server on http://0.0.0.0:49385
+2023-03-17T15:37:53.657  INFO --- [   asgi_gw_0] localstack.services.infra  : Starting mock S3 service on http port 4566 ...
+2023-03-17T15:37:53.843  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS s3.ListObjectsV2 => 404 (NoSuchBucket)
+2023-03-17T15:38:15.024  INFO --- [   asgi_gw_0] localstack.request.http    : GET / => 200
+2023-03-17T15:38:19.846  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS s3.ListObjects => 404 (NoSuchBucket)
+2023-03-17T15:38:25.436  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS s3.ListObjects => 404 (NoSuchBucket)
+2023-03-17T15:38:25.654  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS s3.ListObjects => 404 (NoSuchBucket)
+2023-03-17T15:38:26.117  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS s3.ListObjects => 404 (NoSuchBucket)
+2023-03-17T15:38:34.618  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS s3.CreateBucket => 200
+2023-03-17T15:38:39.579  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS s3.ListObjects => 404 (NoSuchBucket)
+2023-03-17T15:38:39.802  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS s3.ListObjects => 404 (NoSuchBucket)
+2023-03-17T15:38:40.573  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS s3.ListObjects => 404 (NoSuchBucket)
+2023-03-17T15:38:48.470  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS s3.ListObjects => 404 (NoSuchBucket)
+2023-03-17T15:38:48.690  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS s3.ListObjects => 404 (NoSuchBucket)
+2023-03-17T15:38:55.178  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS s3.ListObjectsV2 => 200
+2023-03-17T15:39:47.789  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS s3.ListObjectsV2 => 200
