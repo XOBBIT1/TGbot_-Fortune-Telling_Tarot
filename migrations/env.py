@@ -5,8 +5,8 @@ from sqlalchemy import pool
 
 from alembic import context
 
-from my_settings import config_settings
-from my_settings.bd.models import Base
+from settings import config_settings
+from settings.bd.models import Base
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.

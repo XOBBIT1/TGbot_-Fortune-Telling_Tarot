@@ -1,4 +1,4 @@
-from my_settings import config_settings
+from settings import config_settings
 import sqlalchemy as db
 from sqlalchemy.orm import sessionmaker
 

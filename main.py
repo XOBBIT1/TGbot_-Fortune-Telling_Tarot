@@ -1,6 +1,6 @@
-from bot_animation.callbacks import callback_fortune_button, callback_topics
-from bot_animation.animation import bot
-from bot_animation.keyboards import button_take_card, keyboard
+from core.core_bote.callbacks import callback_fortune_button
+from core.core_bote.animation import bot
+from core.core_bote.keyboards import button_take_card
 
 
 @bot.message_handler(commands=["start"])
