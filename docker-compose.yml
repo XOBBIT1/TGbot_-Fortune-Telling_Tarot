@@ -1,0 +1,49 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:12
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=tg_bot_taro
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+    ports:
+      - '5432:5432'
+
+  #  parser:
+#    image: parser
+#    container_name: parser
+#    build:
+#      context: ""
+#      dockerfile: core/Dockerfile
+#    env_file:
+#      - .env
+
+#  localstack:
+#    image: localstack/localstack:latest
+#    container_name: aws_services_localstack
+#    environment:
+#      - AWS_DEFAULT_REGION=us-east-1
+#      - EDGE_PORT=4566
+#      - SERVICE=s3,dynamodb
+#    ports:
+#      - "4566-4583:4566-4583"
+#    volumes:
+#      - "${LOCALSTACK_VOLUME_DIR:-./volume}:/var/lib/localstack"
+#      - "/var/run/docker.sock:/var/run/docker.sock"
+
+#  bot:
+#    image: bot
+#    container_name: bot
+#    build:
+#      context: ""
+#      dockerfile: Dockerfile
+#    env_file:
+#      - .env
+#    depends_on:
+#      - db
+
+volumes:
+  postgres_data:
