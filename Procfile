@@ -1,1 +1,1 @@
-worker: python main.py
+worker: source setup.sh && pipenv run python bot.py
