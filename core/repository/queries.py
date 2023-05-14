@@ -1,14 +1,22 @@
-from settings.bd.session_to_postgres import create_dbsession
-from settings.bd.models import Users, Descriptions, Cards
+from functools import wraps
 
+from settings.bd.session_to_postgres import create_dbsession
+from settings.bd.models import Users
 import random
 
 db_session = create_dbsession()
 
 
-def reload(func):
-    def wrapper():
-        return func()
+def refresh_state(func):
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        result = func(*args, **kwargs)
+        reload_state(result)
+        return result
+
+    def reload_state(result):
+        db_session.expire_all()
+
     return wrapper
 
 
@@ -20,6 +28,7 @@ def get_names(model):
     return names
 
 
+@refresh_state
 def get_data_by_name(model):
     random_card = random.choice(get_names(model))
     query = db_session.query(model).filter(model.card_name == random_card).all()
