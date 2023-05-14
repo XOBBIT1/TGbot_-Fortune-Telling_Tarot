@@ -7,13 +7,17 @@ from core.core_bote.keyboards import keyboard
 from settings.bd.models import Cards
 from settings.config_settings import common_phrases, emojis
 
-data_form_base = get_data_by_name(Cards)
+
+def get_new_data_form_base():
+    return get_data_by_name(Cards)
 
 
 def callback_fortune_button(call):
     try:
+        global data_form_base
         if call.message:
             if call.data == "fortune":
+                data_form_base = get_new_data_form_base()
                 for card_data in data_form_base:
                     loading(call.message, 'Тасуем карты {}', "🀧")
                     bot.send_message(call.message.chat.id, f"Ваш <b>АРКАН</b>: {card_data.harness}")
@@ -74,3 +78,6 @@ def callback_topics(call):
 
     except Exception as e:
         print(repr(e))
+
+
+

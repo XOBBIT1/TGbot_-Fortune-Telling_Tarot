@@ -1,13 +1,13 @@
 import telebot
 
-from core.core_bote.animation import bot
+from core.core_bote.animation import bot, get_sticker
 from core.repository.queries import add_user
 
 
 @bot.message_handler(content_types=["text"])
 def button_take_card(message):
     add_user(message)
-    bot.send_sticker(message.chat.id, open("static/AnimatedSticker.tgs", "rb"))
+    get_sticker(message)
     if message.chat.type == "private":
         markup = telebot.types.InlineKeyboardMarkup(row_width=1)
         button1 = telebot.types.InlineKeyboardButton("Узнать свою карту 🔮", callback_data="fortune")
@@ -39,5 +39,20 @@ def keyboard(message):
                                           f"Кликай на то, что тебя больше интересует. \n"
                                           f"Возможно именно это и поможет тебе в принятии решений )\n", reply_markup=markup)
 
+    else:
+        bot.send_message(message.chat.id, "Ваша судьба не понятна!")
+
+
+@bot.message_handler(content_types=["text"])
+def button_take_new_card(message):
+    get_sticker(message)
+    if message.chat.type == "private":
+        markup = telebot.types.InlineKeyboardMarkup(row_width=1)
+        button1 = telebot.types.InlineKeyboardButton("Узнать новую карту🔮", callback_data="new card")
+
+        markup.add(button1)
+
+        bot.send_message(message.chat.id, f"Хочешь узанть новую карту?\n"
+                                          f"Кликай на кнопку👇 и узнай новую карту\n", reply_markup=markup)
     else:
         bot.send_message(message.chat.id, "Ваша судьба не понятна!")

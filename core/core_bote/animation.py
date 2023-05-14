@@ -18,3 +18,8 @@ def loading(message, string, icon):
     time.sleep(1)
     bot.edit_message_text(load.format(f' {icon}{icon}{icon}{icon}{icon}'), message.chat.id, wait.message_id)
     time.sleep(1)
+
+
+def get_sticker(message):
+    sticker = bot.send_sticker(message.chat.id, open("static/AnimatedSticker.tgs", "rb"))
+    return sticker
