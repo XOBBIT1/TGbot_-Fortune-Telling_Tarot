@@ -1,7 +1,7 @@
 import telebot
 
 from core.core_bote.animation import bot, get_sticker
-from core.repository.queries import add_user
+from core.services.queries import add_user
 
 
 def button_take_card(message):
