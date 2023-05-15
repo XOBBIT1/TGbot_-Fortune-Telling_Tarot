@@ -28,3 +28,6 @@ common_phrases = [
 ]
 
 emojis = ["🔮", "꒰ঌ🕯໒꒱", "🎴", "🀥", "🪬", "☪️"]
+
+
+IS_POSITING_REQUESTED = False

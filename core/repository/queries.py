@@ -7,19 +7,6 @@ import random
 db_session = create_dbsession()
 
 
-def refresh_state(func):
-    @wraps(func)
-    def wrapper(*args, **kwargs):
-        result = func(*args, **kwargs)
-        reload_state(result)
-        return result
-
-    def reload_state(result):
-        db_session.expire_all()
-
-    return wrapper
-
-
 def get_names(model):
     query = db_session.query(model).all()
     names = []
@@ -28,7 +15,6 @@ def get_names(model):
     return names
 
 
-@refresh_state
 def get_data_by_name(model):
     random_card = random.choice(get_names(model))
     query = db_session.query(model).filter(model.card_name == random_card).all()

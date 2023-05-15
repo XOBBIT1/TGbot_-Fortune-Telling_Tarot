@@ -4,24 +4,27 @@ from core.core_bote.animation import bot, get_sticker
 from core.repository.queries import add_user
 
 
-@bot.message_handler(content_types=["text"])
 def button_take_card(message):
     add_user(message)
     get_sticker(message)
     if message.chat.type == "private":
         markup = telebot.types.InlineKeyboardMarkup(row_width=1)
-        button1 = telebot.types.InlineKeyboardButton("Узнать свою карту 🔮", callback_data="fortune")
+        button1 = telebot.types.InlineKeyboardButton("Узнать свою карту на сегодня 🔮", callback_data="fortune")
 
         markup.add(button1)
 
-        bot.send_message(message.chat.id, f"Привет, <b>{message.from_user.first_name}</b>\n"
-                                          f"Хочешь узнать, что тебя ждёт сегодня?😏\n"
-                                          f"Кликай и всё <b>станет понятно</b> ..........👇\n", reply_markup=markup)
+        bot.send_message(message.chat.id, f"Привет, <b>{message.from_user.first_name}</b> 👋\n"
+                                          f"Хочешь узнать, <b>свою карту</b> на сегодня?😏\n"
+                                          f"Кликай и всё <b>станет понятно</b> ..........👇\n"
+                                          f"\n"
+                                          f"Если же тебе захочется выбрать новую карту, то просто напиши мне)😁\n"
+                                          f"\n"
+                                          f"\n"
+                                          f"<b>P.S : Пиши всё что захочешь я всё пойму)</b>",  reply_markup=markup)
     else:
         bot.send_message(message.chat.id, "Ваша судьба не понятна!")
 
 
-@bot.message_handler(content_types=["text"])
 def keyboard(message):
     if message.chat.type == "private":
         markup = telebot.types.InlineKeyboardMarkup(row_width=1)
@@ -43,16 +46,16 @@ def keyboard(message):
         bot.send_message(message.chat.id, "Ваша судьба не понятна!")
 
 
-@bot.message_handler(content_types=["text"])
 def button_take_new_card(message):
     get_sticker(message)
     if message.chat.type == "private":
         markup = telebot.types.InlineKeyboardMarkup(row_width=1)
-        button1 = telebot.types.InlineKeyboardButton("Узнать новую карту🔮", callback_data="new card")
+        button1 = telebot.types.InlineKeyboardButton("Узнать новую карту🔮", callback_data="new_card")
 
         markup.add(button1)
 
-        bot.send_message(message.chat.id, f"Хочешь узанть новую карту?\n"
-                                          f"Кликай на кнопку👇 и узнай новую карту\n", reply_markup=markup)
+        bot.send_message(message.chat.id, f"<b>Хочешь узанть новую карту?</b>\n"
+                                          f"<i>Хм.................</i>\n"
+                                          f"Кликай на кнопку👇 и узнай свою судьбу\n", reply_markup=markup)
     else:
         bot.send_message(message.chat.id, "Ваша судьба не понятна!")
