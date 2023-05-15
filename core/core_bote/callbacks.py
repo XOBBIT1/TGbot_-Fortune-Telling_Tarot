@@ -1,7 +1,7 @@
 import random
 import time
 
-from core.repository.queries import get_data_by_name
+from core.services.queries import get_data_by_name
 from core.core_bote.animation import bot, loading
 from core.core_bote.keyboards import keyboard
 from settings.bd.models import Cards

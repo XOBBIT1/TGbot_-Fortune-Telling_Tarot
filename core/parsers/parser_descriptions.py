@@ -1,7 +1,7 @@
 import aiohttp
 import bs4
 
-from core.repository.queries import writing_data
+from core.services.queries import writing_data
 from settings.bd.models import Descriptions
 
 
