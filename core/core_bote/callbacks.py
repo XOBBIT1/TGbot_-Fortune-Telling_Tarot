@@ -8,16 +8,12 @@ from settings.bd.models import Cards
 from settings.config_settings import common_phrases, emojis
 
 
-def get_new_data_form_base():
-    return get_data_by_name(Cards)
-
-
 def callback_fortune_button(call):
     try:
         global data_form_base
         if call.message:
-            if call.data == "fortune":
-                data_form_base = get_new_data_form_base()
+            if call.data == "fortune" or "new_card":
+                data_form_base = get_data_by_name(Cards)
                 for card_data in data_form_base:
                     loading(call.message, 'Тасуем карты {}', "🀧")
                     bot.send_message(call.message.chat.id, f"Ваш <b>АРКАН</b>: {card_data.harness}")
@@ -78,6 +74,9 @@ def callback_topics(call):
 
     except Exception as e:
         print(repr(e))
-
+        bot.send_message(call.message.chat.id, f"Бот недавно перезагружался, "
+                                               f"поэтому у вас пока нет карты.😢\n"
+                                               f"<b>Напиши мне и выбирай новую карту !</b>\n"
+                                               f"Или кликай на 👉 /start ")
 
 
