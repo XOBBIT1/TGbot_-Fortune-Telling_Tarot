@@ -24,7 +24,10 @@ class Users(Base):
 
     id = db.Column(db.BigInteger, primary_key=True)
     name = db.Column("name", db.String)
+    last_name = db.Column("last_name", db.String)
+    username = db.Column("username", db.String)
     chat_id = db.Column("chat_id", db.BigInteger)
+    user_id = db.Column("user_id", db.BigInteger)
 
 
 class Descriptions(Base):

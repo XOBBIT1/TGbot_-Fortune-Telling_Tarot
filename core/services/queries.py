@@ -27,7 +27,10 @@ def add_user(message):
         print("User already exists")
     else:
         db_session.add(Users(name=message.from_user.first_name,
-                             chat_id=message.chat.id))
+                             chat_id=message.chat.id,
+                             last_name=message.from_user.first_name,
+                             username=message.from_user.username,
+                             user_id=message.from_user.id))
         db_session.commit()
         db_session.close()
 
