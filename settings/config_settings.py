@@ -17,6 +17,7 @@ user = os.environ['USER']
 password = os.environ['PASSWORD']
 db_name = os.environ['DB_NAME']
 port = os.environ["PORT"]
+db_url = os.environ["DB_URL"]
 
 common_phrases = [
     '<b>Подбираем правельную формулировку</b> {}',
