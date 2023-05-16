@@ -1,5 +1,6 @@
 import aiohttp
 import bs4
+import logging
 
 from core.services.queries import writing_data
 from settings.bd.models import Descriptions
@@ -25,6 +26,6 @@ async def descriptions(card_urls: list):
                 health_description=health_description.text.strip(),
                 spirit_description=spirit_description.text.strip()
             )
-
+        logging.info("Process was ended successfully")
         await writing_data(data, Descriptions)
 
