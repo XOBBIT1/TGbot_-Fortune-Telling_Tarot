@@ -1,1 +1,1 @@
-worker: pipenv install --system python main.py
+worker: python main.py
