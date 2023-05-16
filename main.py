@@ -1,9 +1,14 @@
 import time
+import logging
 
-from settings import config_settings
+from settings import config_settings, logging_settings
 from core.core_bote.callbacks import callback_fortune_button, callback_topics
 from core.core_bote.animation import bot
 from core.core_bote.keyboards import button_take_card, keyboard, button_take_new_card
+
+logging_settings.setup_logger()
+
+logging.info("Bot nachal rabotu !")
 
 
 @bot.message_handler(commands=["start"], content_types=["text"], func=lambda call: True)
@@ -28,7 +33,5 @@ def callback_inline(call):
         time.sleep(2)
         keyboard(call.message)
 
-
-print("Bot nachal rabotu !")
 
 bot.polling(none_stop=True)

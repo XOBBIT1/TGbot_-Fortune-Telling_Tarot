@@ -1,5 +1,6 @@
 import aiohttp
 import bs4
+import logging
 
 from core.services.queries import writing_data
 from settings.bd.models import Images
@@ -16,4 +17,5 @@ async def card_images(card_urls: list):
                 card_img = img.find("img").get("src")
                 data.update(img_url="https://astrometa.ru"+card_img)
 
+        logging.info("Process was ended successfully")
         await writing_data(data, Images)

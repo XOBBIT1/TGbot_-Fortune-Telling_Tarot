@@ -1,5 +1,6 @@
 import aiohttp
 import bs4
+import logging
 
 from core.services.queries import writing_data
 from settings.bd.models import Cards
@@ -17,4 +18,5 @@ async def card_harnes(card_urls: list, data: dict):
                 data.update(harness=harnes.text)
             data.update(card_description=descriptions.text.strip())
 
+        logging.info("Process was ended successfully")
         await writing_data(data, Cards)
