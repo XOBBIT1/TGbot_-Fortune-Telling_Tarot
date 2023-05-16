@@ -24,9 +24,9 @@ async def get_card_data(url):
                        card_url=taro_url)
             cards_urls.append(taro_url)
 
-            # await card_harnes(cards_urls, res)
+            await card_harnes(cards_urls, res)
             # await descriptions(cards_urls)
-            await card_images(cards_urls)
+            # await card_images(cards_urls)
             print("Done")
 
 

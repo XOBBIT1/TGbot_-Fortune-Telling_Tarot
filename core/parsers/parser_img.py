@@ -15,6 +15,5 @@ async def card_images(card_urls: list):
             for img in images:
                 card_img = img.find("img").get("src")
                 data.update(img_url="https://astrometa.ru"+card_img)
-                print("https://astrometa.ru" + card_img)
 
         await writing_data(data, Images)

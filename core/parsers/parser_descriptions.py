@@ -25,7 +25,6 @@ async def descriptions(card_urls: list):
                 health_description=health_description.text.strip(),
                 spirit_description=spirit_description.text.strip()
             )
-            print(data)
 
         await writing_data(data, Descriptions)
 
