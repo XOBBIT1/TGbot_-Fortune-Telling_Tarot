@@ -1,12 +1,8 @@
-import logging
 from functools import wraps
 
 from settings.bd.session_to_postgres import create_dbsession
-from settings import logging_settings
 from settings.bd.models import Users
 import random
-
-logging_settings.setup_logger()
 
 db_session = create_dbsession()
 
@@ -20,15 +16,9 @@ def get_names(model):
 
 
 def get_data_by_name(model):
-    try:
-        random_card = random.choice(get_names(model))
-        query = db_session.query(model).filter(model.card_name == random_card).all()
-        return query
-    except Exception as e:
-        logging.info(f"An error occurred: {e}")
-        db_session.rollback()  # Rollback the transaction on error
-    finally:
-        db_session.close()
+    random_card = random.choice(get_names(model))
+    query = db_session.query(model).filter(model.card_name == random_card).all()
+    return query
 
 
 def add_user(message):
