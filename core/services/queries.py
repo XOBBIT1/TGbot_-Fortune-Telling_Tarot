@@ -1,3 +1,4 @@
+import datetime
 from functools import wraps
 
 from settings.bd.session_to_postgres import create_dbsession
@@ -28,9 +29,8 @@ def add_user(message):
     else:
         db_session.add(Users(name=message.from_user.first_name,
                              chat_id=message.chat.id,
-                             last_name=message.from_user.first_name,
                              username=message.from_user.username,
-                             user_id=message.from_user.id))
+                             created_at=datetime.datetime.now()))
         db_session.commit()
         db_session.close()
 

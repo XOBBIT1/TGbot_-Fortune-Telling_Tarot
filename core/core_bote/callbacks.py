@@ -8,7 +8,7 @@ from settings.bd.models import Cards
 from settings.config_settings import common_phrases, emojis
 
 
-def callback_fortune_button(call):
+def callback_fortune_buttons(call):
     try:
         global data_form_base
         if call.message:
@@ -25,11 +25,16 @@ def callback_fortune_button(call):
                     bot.send_message(call.message.chat.id, f"Значение <b>Карты {card_data.card_name}</b>: \n"
                                                            f"<i> {card_data.card_description}</i>")
                     time.sleep(1)
-        callback_topics(call)
-        time.sleep(3)
-        keyboard(call.message)
+                    callback_topics(call)
+                    time.sleep(3)
+            if call.data == "layout":
+                bot.send_message(call.message.chat.id, f"Расклады пока в разработке😢")
     except Exception as e:
-        print(repr(e))
+        print("dwdawdwaadwadwada")
+        bot.send_message(call.message.chat.id, f"Бот недавно перезагружался, "
+                                               f"поэтому у вас пока нет карты.😢\n"
+                                               f"<b>Напиши мне и выбирай новую карту !</b>\n"
+                                               f"Или кликай на 👉 /start ")
 
 
 def callback_topics(call):
@@ -71,7 +76,7 @@ def callback_topics(call):
                     bot.send_sticker(call.message.chat.id, open("static/AnimatedStickerSpirit.tgs", "rb"))
                     bot.send_message(call.message.chat.id, f"Духовное значение <b>Карты</b> 🧘: \n"
                                                            f"<i>{card_data.descriptions.spirit_description}</i>")
-
+                keyboard(call.message)
     except Exception as e:
         print(repr(e))
         bot.send_message(call.message.chat.id, f"Бот недавно перезагружался, "
@@ -80,3 +85,7 @@ def callback_topics(call):
                                                f"Или кликай на 👉 /start ")
 
 
+# def callback_layout(call):
+#     if call.message:
+#         if call.data == "layout":
+#             bot.send_message(call.message.chat.id, f"Расклады пока в разработке😢")

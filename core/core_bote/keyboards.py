@@ -8,10 +8,11 @@ def button_take_card(message):
     add_user(message)
     get_sticker(message)
     if message.chat.type == "private":
-        markup = telebot.types.InlineKeyboardMarkup(row_width=1)
+        markup = telebot.types.InlineKeyboardMarkup(row_width=2)
         button1 = telebot.types.InlineKeyboardButton("Узнать свою карту на сегодня 🔮", callback_data="fortune")
+        button2 = telebot.types.InlineKeyboardButton("Расклад всё тебе расскжет", callback_data="layout")
 
-        markup.add(button1)
+        markup.add(button1, button2)
 
         bot.send_message(message.chat.id, f"Привет, <b>{message.from_user.first_name}</b> 👋\n"
                                           f"Хочешь узнать, <b>свою карту</b> на сегодня?😏\n"
@@ -49,10 +50,11 @@ def keyboard(message):
 def button_take_new_card(message):
     get_sticker(message)
     if message.chat.type == "private":
-        markup = telebot.types.InlineKeyboardMarkup(row_width=1)
+        markup = telebot.types.InlineKeyboardMarkup(row_width=2)
         button1 = telebot.types.InlineKeyboardButton("Узнать новую карту🔮", callback_data="new_card")
+        button2 = telebot.types.InlineKeyboardButton("Расклад всё тебе расскжет", callback_data="layout")
 
-        markup.add(button1)
+        markup.add(button1, button2)
 
         bot.send_message(message.chat.id, f"<b>Хочешь узанть новую карту?</b>\n"
                                           f"<i>Хм.................</i>\n"

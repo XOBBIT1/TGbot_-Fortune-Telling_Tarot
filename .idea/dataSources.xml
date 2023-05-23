@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="neondb@ep-cool-sound-634182-pooler.us-east-2.aws.neon.tech" uuid="8f9d8603-8742-4652-b930-5c2f5600656a">
+    <data-source source="LOCAL" name="tg_bot_fortune@dpg-chj1igt269v2e2cvv8mg-a.oregon-postgres.render.com" uuid="8f9d8603-8742-4652-b930-5c2f5600656a">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://ep-cool-sound-634182-pooler.us-east-2.aws.neon.tech/neondb</jdbc-url>
+      <jdbc-url>jdbc:postgresql://dpg-chj1igt269v2e2cvv8mg-a.oregon-postgres.render.com:5432/tg_bot_fortune</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>
