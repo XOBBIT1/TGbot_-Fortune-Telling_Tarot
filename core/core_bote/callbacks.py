@@ -12,7 +12,7 @@ def callback_fortune_buttons(call):
     try:
         global data_form_base
         if call.message:
-            if call.data == "fortune" or "new_card":
+            if call.data == "fortune" or call.data =="new_card":
                 data_form_base = get_data_by_name(Cards)
                 for card_data in data_form_base:
                     loading(call.message, 'Тасуем карты {}', "🀧")
@@ -27,7 +27,7 @@ def callback_fortune_buttons(call):
                     time.sleep(1)
                     callback_topics(call)
                     time.sleep(3)
-            if call.data == "layout":
+            elif call.data == "layout":
                 bot.send_message(call.message.chat.id, f"Расклады пока в разработке😢")
     except Exception as e:
         print("dwdawdwaadwadwada")

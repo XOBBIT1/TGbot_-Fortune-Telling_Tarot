@@ -4,7 +4,7 @@ import logging
 from settings import config_settings, logging_settings
 from core.core_bote.callbacks import callback_fortune_buttons, callback_topics
 from core.core_bote.animation import bot
-from core.core_bote.keyboards import button_take_card, keyboard, button_take_new_card
+from core.core_bote.keyboards import button_take_card, button_take_new_card
 
 logging_settings.setup_logger()
 
