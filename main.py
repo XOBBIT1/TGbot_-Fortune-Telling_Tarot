@@ -2,7 +2,7 @@ import time
 import logging
 
 from settings import config_settings, logging_settings
-from core.core_bote.callbacks import callback_fortune_buttons, callback_topics
+from core.core_bote.callbacks import callback_fortune_buttons, callback_topics, callback_layout
 from core.core_bote.animation import bot
 from core.core_bote.keyboards import button_take_card, button_take_new_card
 
@@ -29,7 +29,9 @@ def callback_inline(call):
         callback_fortune_buttons(call)
         config_settings.IS_POSITING_REQUESTED = False
     else:
-        callback_topics(call)
+        callback_layout(call)
+
+    # todo: create new falg for layout keybord
 
 
 bot.polling(none_stop=True)

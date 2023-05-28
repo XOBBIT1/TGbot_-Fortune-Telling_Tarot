@@ -61,3 +61,19 @@ def button_take_new_card(message):
                                           f"Кликай на кнопку👇 и узнай свою судьбу\n", reply_markup=markup)
     else:
         bot.send_message(message.chat.id, "Ваша судьба не понятна!")
+
+
+def keyboard_layout(message):
+    if message.chat.type == "private":
+        markup = telebot.types.InlineKeyboardMarkup(row_width=1)
+        button1 = telebot.types.InlineKeyboardButton("Расклады на любовь ❤️", callback_data="layout_love")
+        button2 = telebot.types.InlineKeyboardButton("Расклады на работу 💼", callback_data="layout_work")
+        markup.add(button1, button2)
+
+        bot.send_message(message.chat.id, f"<b>Согласен, раскалды намного интеереснее, да и "
+                                          f"расскажут больше 😁</b>\n"
+                                          f"Кликай на интересующие тебя рассклады👇и выбирай, "
+                                          f"какой тебе по душе \n", reply_markup=markup)
+    else:
+        bot.send_message(message.chat.id, "Ваша судьба не понятна!")
+

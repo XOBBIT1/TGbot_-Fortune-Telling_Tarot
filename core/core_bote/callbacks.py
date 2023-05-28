@@ -3,7 +3,7 @@ import time
 
 from core.services.queries import get_data_by_name
 from core.core_bote.animation import bot, loading
-from core.core_bote.keyboards import keyboard
+from core.core_bote.keyboards import keyboard, keyboard_layout
 from settings.bd.models import Cards
 from settings.config_settings import common_phrases, emojis
 
@@ -25,12 +25,13 @@ def callback_fortune_buttons(call):
                     bot.send_message(call.message.chat.id, f"Значение <b>Карты {card_data.card_name}</b>: \n"
                                                            f"<i> {card_data.card_description}</i>")
                     time.sleep(1)
-                    callback_topics(call)
+                    keyboard(call.message)
                     time.sleep(3)
             elif call.data == "layout":
-                bot.send_message(call.message.chat.id, f"Расклады пока в разработке😢")
+                loading(call.message, 'Тасуем карты {}', "🀧")
+                keyboard_layout(call.message)
     except Exception as e:
-        print("dwdawdwaadwadwada")
+        print("callback_fortune_buttons : exception ")
         bot.send_message(call.message.chat.id, f"Бот недавно перезагружался, "
                                                f"поэтому у вас пока нет карты.😢\n"
                                                f"<b>Напиши мне и выбирай новую карту !</b>\n"
@@ -76,6 +77,7 @@ def callback_topics(call):
                     bot.send_sticker(call.message.chat.id, open("static/AnimatedStickerSpirit.tgs", "rb"))
                     bot.send_message(call.message.chat.id, f"Духовное значение <b>Карты</b> 🧘: \n"
                                                            f"<i>{card_data.descriptions.spirit_description}</i>")
+                time.sleep(1)
                 keyboard(call.message)
     except Exception as e:
         print(repr(e))
@@ -85,7 +87,10 @@ def callback_topics(call):
                                                f"Или кликай на 👉 /start ")
 
 
-# def callback_layout(call):
-#     if call.message:
-#         if call.data == "layout":
-#             bot.send_message(call.message.chat.id, f"Расклады пока в разработке😢")
+def callback_layout(call):
+    if call.message:
+        if call.data == "layout_love":
+            bot.send_message(call.message.chat.id, f"Здесь будут расклады про любовь, но пока они в разработке😢")
+        elif call.data == "layout_work":
+            bot.send_message(call.message.chat.id, f"Здесь будут расклады про про работу, но пока они в разработке😢")
+        keyboard_layout(call.message)
